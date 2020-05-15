@@ -221,6 +221,19 @@ df_clean_nikkei2225.tail()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -406,6 +419,19 @@ df_relev_nikkei225.tail()
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr>
@@ -1008,6 +1034,19 @@ df_future[(df_future['buy'] == True) & (df_future['close'] < budget_limit)].sort
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1058,6 +1097,19 @@ df_future[df_future['direction'] == 'Up'].sort_values(['mean_beta'], ascending=F
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1191,7 +1243,7 @@ df_clean_focus_nikkei2225 = df_clean_focus_nikkei2225.fillna(method='ffill')
 df_clean_focus_nikkei2225['Close']
 ```
 
-    yesterday 2020-05-13 now 2020-05-14 tomorrow 2020-05-15
+    yesterday 2020-05-14 now 2020-05-15 tomorrow 2020-05-16
     [*********************100%***********************]  4 of 4 completed
 
 
@@ -1199,6 +1251,19 @@ df_clean_focus_nikkei2225['Close']
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1211,13 +1276,6 @@ df_clean_focus_nikkei2225['Close']
   </thead>
   <tbody>
     <tr>
-      <th>2020-05-13</th>
-      <td>3849.0</td>
-      <td>13040.0</td>
-      <td>7408.0</td>
-      <td>8111.0</td>
-    </tr>
-    <tr>
       <th>2020-05-14</th>
       <td>4028.0</td>
       <td>12970.0</td>
@@ -1226,10 +1284,10 @@ df_clean_focus_nikkei2225['Close']
     </tr>
     <tr>
       <th>2020-05-15</th>
-      <td>4028.0</td>
-      <td>12970.0</td>
-      <td>7490.0</td>
-      <td>8489.0</td>
+      <td>4012.0</td>
+      <td>13105.0</td>
+      <td>7454.0</td>
+      <td>8432.0</td>
     </tr>
   </tbody>
 </table>
@@ -1237,7 +1295,7 @@ df_clean_focus_nikkei2225['Close']
 
 
 
-In the 4 symbols that were predicted to go up, 3 did... and 1 didn't. Is this luck or a reliable evidence that this model can really predict profitable shares?
+In the 4 symbols that were predicted to go up, 1 did... and 3 didn't.
 
 # Conclusion
 

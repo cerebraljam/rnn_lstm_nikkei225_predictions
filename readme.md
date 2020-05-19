@@ -937,13 +937,8 @@ if False: #testing function, just to confirm that the values are properly return
 ```python
 def training(nikkei225, df_relev_nikkei225, areas, model, window_size, features, objective, epochs, batch_size, verbose=True):
     n_features = len(features)
-    
-    # if set to True, training will be done on all the nikkei225 companies. However, not all companies behave 
-    # the same way while I coded this, most probably because of the pandemic. 
-    # Because of the virus and the potential for high profit through speculations,
-    # I decided to focus the model on pharmaceutical area companies
-    
-    if False:
+       
+    if len(areas) == 0:
         array = [x for x in nikkei225.keys()]
     else:
         array = [x for x in nikkei225.keys() if nikkei225[x]['area'] in areas]

@@ -163,7 +163,7 @@ end_date = tomorrow
 all_weekdays = pd.date_range(start=start_date, end=end_date, freq='B')
 ```
 
-    today 2020-05-18 tomorrow 2020-05-19
+    today 2020-05-19 tomorrow 2020-05-20
 
 
 
@@ -367,30 +367,6 @@ df_clean_nikkei225
       <td>...</td>
     </tr>
     <tr>
-      <th>2020-05-13</th>
-      <td>473.000000</td>
-      <td>2307.000000</td>
-      <td>682.799988</td>
-      <td>3010.000000</td>
-      <td>3475.000000</td>
-      <td>940.000000</td>
-      <td>860.000000</td>
-      <td>1194.000000</td>
-      <td>1145.000000</td>
-      <td>2744.000000</td>
-      <td>...</td>
-      <td>4470700.0</td>
-      <td>1030700.0</td>
-      <td>1377200.0</td>
-      <td>393400.0</td>
-      <td>3617900.0</td>
-      <td>777500.0</td>
-      <td>653200.0</td>
-      <td>1193300.0</td>
-      <td>18234300.0</td>
-      <td>79500.0</td>
-    </tr>
-    <tr>
       <th>2020-05-14</th>
       <td>462.000000</td>
       <td>2305.000000</td>
@@ -460,35 +436,59 @@ df_clean_nikkei225
       <td>671600.0</td>
       <td>592800.0</td>
       <td>25380600.0</td>
-      <td>0.0</td>
+      <td>71900.0</td>
     </tr>
     <tr>
       <th>2020-05-19</th>
-      <td>457.000000</td>
-      <td>2288.000000</td>
-      <td>709.299988</td>
-      <td>3045.000000</td>
-      <td>3610.000000</td>
-      <td>932.000000</td>
-      <td>855.000000</td>
-      <td>1187.000000</td>
-      <td>1187.000000</td>
-      <td>2416.500000</td>
+      <td>463.000000</td>
+      <td>2246.000000</td>
+      <td>732.900024</td>
+      <td>3060.000000</td>
+      <td>3675.000000</td>
+      <td>953.000000</td>
+      <td>869.000000</td>
+      <td>1214.000000</td>
+      <td>1207.000000</td>
+      <td>2515.000000</td>
       <td>...</td>
-      <td>3044800.0</td>
-      <td>976700.0</td>
-      <td>869500.0</td>
-      <td>352300.0</td>
-      <td>3188600.0</td>
-      <td>325600.0</td>
-      <td>671600.0</td>
-      <td>592800.0</td>
-      <td>25380600.0</td>
+      <td>3700200.0</td>
+      <td>900400.0</td>
+      <td>894200.0</td>
+      <td>433800.0</td>
+      <td>5696500.0</td>
+      <td>577600.0</td>
+      <td>926700.0</td>
+      <td>873300.0</td>
+      <td>41866700.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2020-05-20</th>
+      <td>463.000000</td>
+      <td>2246.000000</td>
+      <td>732.900024</td>
+      <td>3060.000000</td>
+      <td>3675.000000</td>
+      <td>953.000000</td>
+      <td>869.000000</td>
+      <td>1214.000000</td>
+      <td>1207.000000</td>
+      <td>2515.000000</td>
+      <td>...</td>
+      <td>3700200.0</td>
+      <td>900400.0</td>
+      <td>894200.0</td>
+      <td>433800.0</td>
+      <td>5696500.0</td>
+      <td>577600.0</td>
+      <td>926700.0</td>
+      <td>873300.0</td>
+      <td>41866700.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>622 rows × 1356 columns</p>
+<p>623 rows × 1356 columns</p>
 </div>
 
 
@@ -500,6 +500,7 @@ df_close_nikkei225 = df_clean_nikkei225['Close']
 
 # here I am adding few values, mainly rolling averages over 5,20 and 100 days, 
 # then the ratio between the 5 and 20 days rolling average, then 20 and 100 days
+# I am also adding value of the nikkei index to each entry.
 for symbol in [x for x in nikkei225.keys()]:
     df_clean_nikkei225[('RollAvg5', symbol)] = df_close_nikkei225.loc[:, symbol].rolling(window=5).mean()
     df_clean_nikkei225[('RollAvg20', symbol)] = df_close_nikkei225.loc[:, symbol].rolling(window=20).mean()
@@ -698,30 +699,6 @@ df_relev_nikkei225.tail(-100)
       <td>...</td>
     </tr>
     <tr>
-      <th>2020-05-13</th>
-      <td>473.0</td>
-      <td>2307.0</td>
-      <td>682.799988</td>
-      <td>3010.0</td>
-      <td>3475.0</td>
-      <td>940.0</td>
-      <td>860.0</td>
-      <td>1194.0</td>
-      <td>1145.0</td>
-      <td>2744.0</td>
-      <td>...</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-      <td>20267.050781</td>
-    </tr>
-    <tr>
       <th>2020-05-14</th>
       <td>462.0</td>
       <td>2305.0</td>
@@ -795,31 +772,55 @@ df_relev_nikkei225.tail(-100)
     </tr>
     <tr>
       <th>2020-05-19</th>
-      <td>457.0</td>
-      <td>2288.0</td>
-      <td>709.299988</td>
-      <td>3045.0</td>
-      <td>3610.0</td>
-      <td>932.0</td>
-      <td>855.0</td>
-      <td>1187.0</td>
-      <td>1187.0</td>
-      <td>2416.5</td>
+      <td>463.0</td>
+      <td>2246.0</td>
+      <td>732.900024</td>
+      <td>3060.0</td>
+      <td>3675.0</td>
+      <td>953.0</td>
+      <td>869.0</td>
+      <td>1214.0</td>
+      <td>1207.0</td>
+      <td>2515.0</td>
       <td>...</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
-      <td>20133.730469</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+    </tr>
+    <tr>
+      <th>2020-05-20</th>
+      <td>463.0</td>
+      <td>2246.0</td>
+      <td>732.900024</td>
+      <td>3060.0</td>
+      <td>3675.0</td>
+      <td>953.0</td>
+      <td>869.0</td>
+      <td>1214.0</td>
+      <td>1207.0</td>
+      <td>2515.0</td>
+      <td>...</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
+      <td>20433.449219</td>
     </tr>
   </tbody>
 </table>
-<p>522 rows × 2254 columns</p>
+<p>523 rows × 2254 columns</p>
 </div>
 
 
@@ -1023,7 +1024,7 @@ Here we are defining the parameters of the model, then we initialize it and star
 
 
 ```python
-window_size = 3
+window_size = 4
 features = [
     'Close',
     'Low',
@@ -1042,7 +1043,7 @@ areas = ['Pharmaceuticals']#, 'Services']
 
 error_objective = 0.02
 
-epochs = 30
+epochs = 50
 batch_size = 50
 nodes = 5
 dropout = 0.2
@@ -1052,15 +1053,15 @@ model = build_part1_RNN(window_size, n_features, nodes, dropout)
 model = training(nikkei225, df_relev_nikkei225, areas, model, window_size, features, objective, epochs, batch_size, True)
 ```
 
-    * 4568.T DAIICHI SANKYO CO., LTD. training error = 0.025 (False), testing error: 0.178 (False)
-    * 4502.T TAKEDA PHARMACEUTICAL CO., LTD. training error = 0.043 (False), testing error: 0.171 (False)
-    * 4578.T OTSUKA HOLDINGS CO., LTD. training error = 0.040 (False), testing error: 0.115 (False)
-    * 4507.T SHIONOGI & CO., LTD. training error = 0.035 (False), testing error: 0.309 (False)
-    * 4503.T ASTELLAS PHARMA INC. training error = 0.040 (False), testing error: 0.083 (False)
-    * 4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. training error = 0.023 (False), testing error: 0.096 (False)
-    * 4519.T CHUGAI PHARMACEUTICAL CO., LTD. training error = 0.006 (True), testing error: 0.065 (False)
-    * 4151.T KYOWA KIRIN CO., LTD. training error = 0.034 (False), testing error: 0.284 (False)
-    * 4523.T EISAI CO., LTD. training error = 0.032 (False), testing error: 0.073 (False)
+    * 4503.T ASTELLAS PHARMA INC. training error = 0.051 (False), testing error: 0.115 (False)
+    * 4151.T KYOWA KIRIN CO., LTD. training error = 0.041 (False), testing error: 0.744 (False)
+    * 4502.T TAKEDA PHARMACEUTICAL CO., LTD. training error = 0.019 (True), testing error: 0.148 (False)
+    * 4519.T CHUGAI PHARMACEUTICAL CO., LTD. training error = 0.014 (True), testing error: 0.421 (False)
+    * 4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. training error = 0.032 (False), testing error: 0.090 (False)
+    * 4523.T EISAI CO., LTD. training error = 0.051 (False), testing error: 0.028 (False)
+    * 4578.T OTSUKA HOLDINGS CO., LTD. training error = 0.056 (False), testing error: 0.068 (False)
+    * 4507.T SHIONOGI & CO., LTD. training error = 0.054 (False), testing error: 0.210 (False)
+    * 4568.T DAIICHI SANKYO CO., LTD. training error = 0.033 (False), testing error: 0.104 (False)
 
 
 
@@ -1071,7 +1072,7 @@ model = training(nikkei225, df_relev_nikkei225, areas, model, window_size, featu
 ![png](tse_lstm_predictions_files/tse_lstm_predictions_19_2.png)
 
 
-Impressive! It kind of follow the real values, like all the LSTM examples! ^_^
+Impressive! It kind of follow the real values, like for all the LSTM examples! ^_^
 
 # Applying to predict the future
 
@@ -1093,7 +1094,7 @@ def strategy_predict_higher(predicted, previous_prediction):
     decision = False
     difference = predicted - previous_prediction
             
-    if difference =< 0:
+    if difference <= 0:
         guess = 'Down'.format(predicted)
     else:
         guess = 'Up'.format(predicted)
@@ -1252,15 +1253,15 @@ mbeta, df_future = best_options(nikkei225, df_relev_nikkei225, areas, model, win
 print('\nmean_beta: {:0.4f}'.format(mbeta))
 ```
 
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.675, capital: -468.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.734, capital: 786.5
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.685, capital: 254.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.762, capital: 1435.0
+    4507.T SHIONOGI & CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.795, capital: -62.0
+    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.637, capital: -514.0
+    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.685, capital: 457.0
+    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.681, capital: -325.0
     
-    mean_beta: 0.7785
+    mean_beta: 0.8088
 
 
-That last mean_beta value is an important indicator. It means that the model and conditions was successful ~77.85% of the time with the current model and parameters.
+That last mean_beta value is an important indicator. It means that the model and conditions was successful ~80.8% of the time with the current model and parameters.
 
 It is important to take into consideration how "successes" and "failures" is defined:
 * if an increase is predicted, we decide to buy, and there is a profit (>0) observed the next day: `success`
@@ -1268,7 +1269,7 @@ It is important to take into consideration how "successes" and "failures" is def
 * if a loss is predicted, we decide not to buy, and there is a loss (<=0) observed the next day: `success`
 * if a loss is predicted, we decide not to buy, and there is a profit (>0) the next day: `neither success/failure`. just a lost opportunity.
 
-This last situation does have an impact on the statistics.
+This last situation does have an impact on the success rate.
 
 ## According to our model, which stock is expected to rise tomorrow?
 
@@ -1304,20 +1305,20 @@ df_future[(df_future['buy'] == True) & (df_future['close'] < budget_limit)].sort
   </thead>
   <tbody>
     <tr>
-      <th>8</th>
-      <td>2020-05-18</td>
+      <th>1</th>
+      <td>2020-05-19</td>
       <td>4506.T</td>
       <td>SUMITOMO DAINIPPON PHARMA CO., LTD.</td>
       <td>Pharmaceuticals</td>
-      <td>1383.0</td>
-      <td>-1.399235</td>
-      <td>-1.341139</td>
+      <td>1401.0</td>
+      <td>-1.364908</td>
+      <td>-1.054401</td>
       <td>Up</td>
       <td>True</td>
-      <td>56</td>
-      <td>27</td>
-      <td>0.6746987951807228</td>
-      <td>-468.0</td>
+      <td>58</td>
+      <td>33</td>
+      <td>0.6373626373626373</td>
+      <td>-514.0</td>
     </tr>
   </tbody>
 </table>
@@ -1377,116 +1378,100 @@ df_future[df_future['direction'] == 'Up'].sort_values(['mean_beta'], ascending=F
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
-      <td>2020-05-18</td>
-      <td>4519.T</td>
-      <td>CHUGAI PHARMACEUTICAL CO., LTD.</td>
-      <td>Pharmaceuticals</td>
-      <td>13360.0</td>
-      <td>2.601588</td>
-      <td>1.662781</td>
-      <td>Up</td>
-      <td>False</td>
-      <td>58</td>
-      <td>4</td>
-      <td>0.9354838709677419</td>
-      <td>450.0</td>
-    </tr>
-    <tr>
       <th>6</th>
-      <td>2020-05-18</td>
+      <td>2020-05-19</td>
       <td>4568.T</td>
       <td>DAIICHI SANKYO CO., LTD.</td>
       <td>Pharmaceuticals</td>
-      <td>8491.0</td>
-      <td>2.175758</td>
-      <td>1.548060</td>
+      <td>8519.0</td>
+      <td>2.184459</td>
+      <td>1.629790</td>
       <td>Up</td>
       <td>False</td>
       <td>55</td>
-      <td>8</td>
-      <td>0.873015873015873</td>
-      <td>377.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2020-05-18</td>
-      <td>4151.T</td>
-      <td>KYOWA KIRIN CO., LTD.</td>
-      <td>Pharmaceuticals</td>
-      <td>2624.0</td>
-      <td>1.947171</td>
-      <td>1.408966</td>
-      <td>Up</td>
-      <td>False</td>
-      <td>56</td>
-      <td>10</td>
-      <td>0.8484848484848485</td>
-      <td>327.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2020-05-18</td>
-      <td>4523.T</td>
-      <td>EISAI CO., LTD.</td>
-      <td>Pharmaceuticals</td>
-      <td>7514.0</td>
-      <td>-0.149130</td>
-      <td>-0.282903</td>
-      <td>Up</td>
-      <td>True</td>
-      <td>61</td>
-      <td>19</td>
-      <td>0.7625</td>
-      <td>1435.0</td>
+      <td>1</td>
+      <td>0.9821428571428571</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>2020-05-18</td>
+      <td>2020-05-19</td>
+      <td>4151.T</td>
+      <td>KYOWA KIRIN CO., LTD.</td>
+      <td>Pharmaceuticals</td>
+      <td>2621.0</td>
+      <td>1.926043</td>
+      <td>1.495396</td>
+      <td>Up</td>
+      <td>False</td>
+      <td>55</td>
+      <td>3</td>
+      <td>0.9482758620689655</td>
+      <td>104.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2020-05-19</td>
+      <td>4507.T</td>
+      <td>SHIONOGI &amp; CO., LTD.</td>
+      <td>Pharmaceuticals</td>
+      <td>5743.0</td>
+      <td>-0.783053</td>
+      <td>-0.591052</td>
+      <td>Up</td>
+      <td>True</td>
+      <td>62</td>
+      <td>16</td>
+      <td>0.7948717948717948</td>
+      <td>-62.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020-05-19</td>
       <td>4502.T</td>
       <td>TAKEDA PHARMACEUTICAL CO., LTD.</td>
       <td>Pharmaceuticals</td>
-      <td>4023.0</td>
-      <td>-0.525037</td>
-      <td>-0.647634</td>
+      <td>4085.0</td>
+      <td>-0.438334</td>
+      <td>-0.374585</td>
       <td>Up</td>
       <td>True</td>
-      <td>69</td>
-      <td>25</td>
-      <td>0.7340425531914894</td>
-      <td>786.5</td>
+      <td>61</td>
+      <td>28</td>
+      <td>0.6853932584269663</td>
+      <td>457.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2020-05-18</td>
+      <td>2020-05-19</td>
       <td>4578.T</td>
       <td>OTSUKA HOLDINGS CO., LTD.</td>
       <td>Pharmaceuticals</td>
-      <td>4268.0</td>
-      <td>-0.756019</td>
-      <td>-0.877582</td>
+      <td>4329.0</td>
+      <td>-0.650294</td>
+      <td>-0.474505</td>
       <td>Up</td>
       <td>True</td>
-      <td>50</td>
-      <td>23</td>
-      <td>0.684931506849315</td>
-      <td>254.0</td>
+      <td>47</td>
+      <td>22</td>
+      <td>0.6811594202898551</td>
+      <td>-325.0</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>2020-05-18</td>
+      <th>1</th>
+      <td>2020-05-19</td>
       <td>4506.T</td>
       <td>SUMITOMO DAINIPPON PHARMA CO., LTD.</td>
       <td>Pharmaceuticals</td>
-      <td>1383.0</td>
-      <td>-1.399235</td>
-      <td>-1.341139</td>
+      <td>1401.0</td>
+      <td>-1.364908</td>
+      <td>-1.054401</td>
       <td>Up</td>
       <td>True</td>
-      <td>56</td>
-      <td>27</td>
-      <td>0.6746987951807228</td>
-      <td>-468.0</td>
+      <td>58</td>
+      <td>33</td>
+      <td>0.6373626373626373</td>
+      <td>-514.0</td>
     </tr>
   </tbody>
 </table>
@@ -1534,16 +1519,12 @@ df_clean_focus_nikkei2225 = df_raw_focus_nikkei225.reindex(all_weekdays)
 df_clean_focus_nikkei2225 = df_clean_focus_nikkei2225.fillna(method='ffill')
 
 # keeping a dataframe with just the close values
-```
-
-    yesterday 2020-05-18 now 2020-05-19 tomorrow 2020-05-20
-    [*********************100%***********************]  7 of 7 completed
-
-
-
-```python
 df_clean_focus_nikkei2225['Close']
 ```
+
+    yesterday 2020-05-19 now 2020-05-20 tomorrow 2020-05-21
+    [*********************100%***********************]  6 of 6 completed
+
 
 
 
@@ -1556,42 +1537,38 @@ df_clean_focus_nikkei2225['Close']
       <th>4151.T</th>
       <th>4502.T</th>
       <th>4506.T</th>
-      <th>4519.T</th>
-      <th>4523.T</th>
+      <th>4507.T</th>
       <th>4568.T</th>
       <th>4578.T</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2020-05-18</th>
-      <td>2624.0</td>
-      <td>4023.0</td>
-      <td>1383.0</td>
-      <td>13360.0</td>
-      <td>7514.0</td>
-      <td>8491.0</td>
-      <td>4268.0</td>
-    </tr>
-    <tr>
       <th>2020-05-19</th>
       <td>2621.0</td>
       <td>4085.0</td>
       <td>1401.0</td>
-      <td>13305.0</td>
-      <td>7489.0</td>
+      <td>5743.0</td>
       <td>8519.0</td>
       <td>4329.0</td>
     </tr>
     <tr>
       <th>2020-05-20</th>
-      <td>2621.0</td>
-      <td>4085.0</td>
-      <td>1401.0</td>
-      <td>13305.0</td>
-      <td>7489.0</td>
-      <td>8519.0</td>
-      <td>4329.0</td>
+      <td>2664.0</td>
+      <td>4125.0</td>
+      <td>1407.0</td>
+      <td>5803.0</td>
+      <td>8571.0</td>
+      <td>4353.0</td>
+    </tr>
+    <tr>
+      <th>2020-05-21</th>
+      <td>2664.0</td>
+      <td>4125.0</td>
+      <td>1407.0</td>
+      <td>5803.0</td>
+      <td>8571.0</td>
+      <td>4353.0</td>
     </tr>
   </tbody>
 </table>
@@ -1603,74 +1580,19 @@ df_clean_focus_nikkei2225['Close']
 ```python
 series_capital = (df_clean_focus_nikkei2225['Close'].loc[tomorrow] - df_clean_focus_nikkei2225['Close'].loc[today]) * 100
 print('Symbols with profits: {}. with losses: {}. Capital Gain/loss: {:0.0f}¥'.format(series_capital.where(series_capital>0).count(), series_capital.where(series_capital<=0).count(), series_capital.sum()))
-df_clean_focus_nikkei2225['Close']
 ```
 
-    Symbols with profits: 4. with losses: 3. Capital Gain/loss: 8600¥
+    Symbols with profits: 6. with losses: 0. Capital Gain/loss: 22500¥
 
 
+In the 6 symbols that were predicted to go up, 6 did... and 0 didn't.
+If we had bought 100 shares of each (minimum that we can buy on the TSE), we would end the day with a profit of 22500¥... Not quite enough to retire yet, but still a gain.
 
+### How performant is this prediction? 
 
+Actually, I am quite surprised by this outcome. It must have been an exceptional day on the stock market, because success/fail tend to be close to the average. A success rate of 100% is really unlikely.
 
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>4151.T</th>
-      <th>4502.T</th>
-      <th>4506.T</th>
-      <th>4519.T</th>
-      <th>4523.T</th>
-      <th>4568.T</th>
-      <th>4578.T</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2020-05-18</th>
-      <td>2624.0</td>
-      <td>4023.0</td>
-      <td>1383.0</td>
-      <td>13360.0</td>
-      <td>7514.0</td>
-      <td>8491.0</td>
-      <td>4268.0</td>
-    </tr>
-    <tr>
-      <th>2020-05-19</th>
-      <td>2621.0</td>
-      <td>4085.0</td>
-      <td>1401.0</td>
-      <td>13305.0</td>
-      <td>7489.0</td>
-      <td>8519.0</td>
-      <td>4329.0</td>
-    </tr>
-    <tr>
-      <th>2020-05-20</th>
-      <td>2621.0</td>
-      <td>4085.0</td>
-      <td>1401.0</td>
-      <td>13305.0</td>
-      <td>7489.0</td>
-      <td>8519.0</td>
-      <td>4329.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-In the 7 symbols that were predicted to go up, 4 did... and 3 didn't.
-If we had bought 100 shares of each (minimum that we can buy on the TSE), we would end the day with a profit of 8600¥... Not quite enough to retire yet.
-
-### How performant is this prediction? 4 successes and 3 misses seems close to a coin flip
-
-Indeed, with 67% success on 7 symbols, we are quite close to the average. 
-
-#### How would a random strategy compete against this heavy model?
+### How would a random strategy compete against this heavy model?
 
 
 ```python
@@ -1680,26 +1602,17 @@ mbeta, df_future = best_options(nikkei225, df_relev_nikkei225, areas, model, win
 print('mean_beta: ', mbeta)
 ```
 
-    2282.T NH FOODS LTD. Foods (buy: 1) mean_beta: 0.571, capital: -427.0
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: 1) mean_beta: 0.536, capital: -317.0
-    9766.T KONAMI HOLDINGS CORP. Services (buy: 1) mean_beta: 0.581, capital: -364.0
-    4755.T RAKUTEN, INC. Services (buy: 1) mean_beta: 0.605, capital: 61.0
-    4704.T TREND MICRO INC. Services (buy: 1) mean_beta: 0.548, capital: -125.0
-    2413.T M3, INC. Services (buy: 1) mean_beta: 0.771, capital: 1333.0
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.574, capital: -382.0
-    4568.T DAIICHI SANKYO CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.591, capital: -1129.0
-    4151.T KYOWA KIRIN CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.586, capital: 62.0
-    4507.T SHIONOGI & CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.633, capital: -737.0
-    2502.T ASAHI GROUP HOLDINGS, LTD. Foods (buy: 1) mean_beta: 0.586, capital: -1223.0
-    4324.T DENTSU GROUP INC. Services (buy: 1) mean_beta: 0.593, capital: -966.0
-    2531.T TAKARA HOLDINGS INC. Foods (buy: 1) mean_beta: 0.596, capital: -101.0
-    2269.T MEIJI HOLDINGS CO., LTD. Foods (buy: 1) mean_beta: 0.620, capital: 950.0
-    mean_beta:  0.6019900497512438
+    4523.T EISAI CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.653, capital: 799.0
+    4519.T CHUGAI PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.578, capital: 1350.0
+    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.635, capital: 802.0
+    4507.T SHIONOGI & CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.635, capital: 9.0
+    4568.T DAIICHI SANKYO CO., LTD. Pharmaceuticals (buy: 1) mean_beta: 0.602, capital: 1280.0
+    mean_beta:  0.6184049079754601
 
 
-Following the same conditions, a random selection would give us a success rate of 60%. A Random selection seems quite be quite comparable to our heavy LSTM model!
+Following the same conditions, a random selection would give us a success rate of 62%. A Random selection seems quite be quite comparable to our heavy LSTM model!
 
-#### How about if we don't buy anything?
+### How about if we don't buy anything?
 
 
 ```python
@@ -1709,18 +1622,18 @@ mbeta, df_future = best_options(nikkei225, df_relev_nikkei225, areas, model, win
 print('mean_beta: ', mbeta)
 ```
 
-    mean_beta:  0.9994450610432852
+    mean_beta:  0.9980119284294234
 
 
 We can't be wrong if we don't lose money... since we consider a missed opportunity just as good as not losing our investment.
 
 # Conclusion
 
-The predictions from the LSTM RNN seems to be following the reality, but if we try to use these predictions to take purchasing decisions, we can see that the results are quite close to a coin toss. The ratio of successes VS failures would probably be 50% if we had had 8 symbols selected.
+The predictions from the LSTM RNN seems to be following the reality, but if we try to use these predictions to take purchasing decisions, the results should be close to a coin toss.
 
-What is scary is that a random selection was almost as successful as our model
+What is scary is that a random selection manage to get a 62% success rate.
 
-Can we use this in real life? Blindly, it doesn't seems much better than choosing randomly.
+Can we use this in real life? I didn't. Not sure I will, especially not blindly.
 
 # Optimization section
 
@@ -1794,206 +1707,10 @@ if True:
     
 ```
 
-    0 6 31 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 20 0.06888994874943755
-    4151.T KYOWA KIRIN CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.821, capital: 248.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.615, capital: 46.5
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.611, capital: -503.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.718, capital: 933.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.566, capital: -1201.0
-    {'mean': array(0.72537313), 'window_size': 6, 'epochs': 31, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 20, 'batch_size': 53, 'dropout': 0.06888994874943755}
-    1 3 39 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 25 0.019063136806713434
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.520, capital: -1167.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.711, capital: 1571.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.655, capital: 402.5
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.656, capital: -328.0
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: True) mean_beta: 0.671, capital: -393.0
-    {'mean': array(0.72321429), 'window_size': 3, 'epochs': 39, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 25, 'batch_size': 43, 'dropout': 0.019063136806713434}
-    2 3 59 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 21 0.15777745300122997
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.632, capital: -85.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.598, capital: -81.0
-    4151.T KYOWA KIRIN CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.812, capital: 369.0
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: True) mean_beta: 0.676, capital: -300.5
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.609, capital: -567.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.699, capital: 1968.0
-    {'mean': array(0.71079137), 'window_size': 3, 'epochs': 59, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 21, 'batch_size': 50, 'dropout': 0.15777745300122997}
-    3 5 59 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 6 0.13680624942746675
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: True) mean_beta: 0.614, capital: -482.5
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.667, capital: -214.0
-    4151.T KYOWA KIRIN CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.761, capital: 368.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.696, capital: 407.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.670, capital: 92.0
-    {'mean': array(0.70596798), 'window_size': 5, 'epochs': 59, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 6, 'batch_size': 51, 'dropout': 0.13680624942746675}
-    4 6 57 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 14 0.13226907792084228
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: True) mean_beta: 0.694, capital: -271.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.519, capital: -1209.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.711, capital: 1450.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.641, capital: 349.0
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.607, capital: -530.0
-    {'mean': array(0.71137026), 'window_size': 6, 'epochs': 57, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 14, 'batch_size': 63, 'dropout': 0.13226907792084228}
-    5 4 48 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 7 0.16010336911957257
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.641, capital: -525.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.714, capital: 415.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.644, capital: 329.0
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.667, capital: -179.0
-    {'mean': array(0.74135338), 'window_size': 4, 'epochs': 48, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 7, 'batch_size': 58, 'dropout': 0.16010336911957257}
-    6 6 53 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 19 0.02748478960576206
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.633, capital: -457.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.600, capital: -189.0
-    4503.T ASTELLAS PHARMA INC. Pharmaceuticals (buy: True) mean_beta: 0.686, capital: -398.5
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.707, capital: 1023.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.584, capital: -802.0
-    {'mean': array(0.72222222), 'window_size': 6, 'epochs': 53, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 19, 'batch_size': 48, 'dropout': 0.02748478960576206}
-    7 5 41 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 26 0.1289861465516361
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.628, capital: -156.0
-    4151.T KYOWA KIRIN CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.815, capital: 313.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.747, capital: 1542.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.603, capital: -110.0
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.652, capital: -303.0
-    {'mean': array(0.72822823), 'window_size': 5, 'epochs': 41, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 26, 'batch_size': 46, 'dropout': 0.1289861465516361}
-    8 3 30 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 5 0.19444572261560805
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.697, capital: 304.0
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.753, capital: 1337.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.692, capital: 605.5
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.670, capital: -114.0
-    {'mean': array(0.77641654), 'window_size': 3, 'epochs': 30, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 5, 'batch_size': 40, 'dropout': 0.19444572261560805}
-    9 5 35 ['Close', 'Low', 'High', 'ratio5-20', 'ratio20-100', 'Volume', 'N225'] 21 0.040872584621836294
-    4523.T EISAI CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.728, capital: 1248.0
-    4502.T TAKEDA PHARMACEUTICAL CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.667, capital: 215.0
-    4506.T SUMITOMO DAINIPPON PHARMA CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.674, capital: -323.0
-    4578.T OTSUKA HOLDINGS CO., LTD. Pharmaceuticals (buy: True) mean_beta: 0.611, capital: -671.0
-    {'mean': array(0.75186846), 'window_size': 5, 'epochs': 35, 'features': 'Close,Low,High,ratio5-20,ratio20-100,Volume,N225', 'nodes': 21, 'batch_size': 41, 'dropout': 0.040872584621836294}
-    CPU times: user 5min 5s, sys: 1min 8s, total: 6min 14s
-    Wall time: 3min 40s
-
-
 
 ```python
 df_mean_beta.sort_values(by='mean', ascending=False)
 ```
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mean</th>
-      <th>window_size</th>
-      <th>epochs</th>
-      <th>features</th>
-      <th>nodes</th>
-      <th>dropout</th>
-      <th>batch_size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>8</th>
-      <td>0.776416539050536</td>
-      <td>3</td>
-      <td>30</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>5</td>
-      <td>0.194446</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>0.7518684603886397</td>
-      <td>5</td>
-      <td>35</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>21</td>
-      <td>0.040873</td>
-      <td>41.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.7413533834586467</td>
-      <td>4</td>
-      <td>48</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>7</td>
-      <td>0.160103</td>
-      <td>58.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.7282282282282282</td>
-      <td>5</td>
-      <td>41</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>26</td>
-      <td>0.128986</td>
-      <td>46.0</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>0.7253731343283583</td>
-      <td>6</td>
-      <td>31</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>20</td>
-      <td>0.068890</td>
-      <td>53.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.7232142857142857</td>
-      <td>3</td>
-      <td>39</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>25</td>
-      <td>0.019063</td>
-      <td>43.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.7222222222222222</td>
-      <td>6</td>
-      <td>53</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>19</td>
-      <td>0.027485</td>
-      <td>48.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.7113702623906706</td>
-      <td>6</td>
-      <td>57</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>14</td>
-      <td>0.132269</td>
-      <td>63.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.7107913669064748</td>
-      <td>3</td>
-      <td>59</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>21</td>
-      <td>0.157777</td>
-      <td>50.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.7059679767103348</td>
-      <td>5</td>
-      <td>59</td>
-      <td>Close,Low,High,ratio5-20,ratio20-100,Volume,N225</td>
-      <td>6</td>
-      <td>0.136806</td>
-      <td>51.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 ```
 Area: Pharmaceuticals
